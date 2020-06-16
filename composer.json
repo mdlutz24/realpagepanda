@@ -1,0 +1,15 @@
+{
+    "name": "mdlutz24/realpagepanda",
+    "description": "Package generated using wsdltophp/packagegenerator",
+    "require": {
+        "php": ">=5.3.3",
+        "ext-soap": "*",
+        "ext-mbstring": "*",
+        "wsdltophp/packagebase": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "mdlutz24\\realpagepanda\\FloorPlan\\": "./src/FloorPlan/"
+        }
+    }
+}

@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://realpage.com/webservices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://realpage.com/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://realpage.com/webservices">
+      <s:element name="List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listCriteria" type="tns:ArrayOfListCriterion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfListCriterion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ListCriterion" nillable="true" type="tns:ListCriterion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ListCriterion">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SingleValue" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MinValue" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MaxValue" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PmcID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListResult" type="tns:ArrayOfUnitObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUnitObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UnitObject" nillable="true">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="PropertyNumberID" type="s:int" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="NonRevenueDescription" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="BaseRentAmount" type="s:decimal" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FloorPlanMarketRent" type="s:decimal" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="UnitMarketRent" type="s:decimal" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NonRevenueFlag" type="s:unsignedByte" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NonRefundFee" type="s:decimal" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="DepositAmount" type="s:decimal" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Accessibility">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="HearingBit" type="s:boolean" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="MobilityBit" type="s:boolean" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="VisionBit" type="s:boolean" />
+                    </s:sequence>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address1" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address2" type="s:string" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="BuildingID" type="s:int" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BuildingNumber" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CityName" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CountryName" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CountyName" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="State" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="UnitID" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="UnitNumber" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Zip" type="s:string" />
+                    </s:sequence>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Availability">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="UnavailableCode" type="s:string" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="MadeReadyBit" type="s:boolean" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MadeReadyDate" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="AvailableDate" type="s:string" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="AvailableBit" type="s:boolean" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastActionCode" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastActionDesc" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="VacantDate" type="s:string" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="VacantBit" type="s:boolean" />
+                    </s:sequence>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FloorPlan">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FloorPlanID" type="s:int" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FloorPlanCode" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FloorPlanName" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FloorPlanGroupName" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FloorPlanGroupID" type="s:string" />
+                    </s:sequence>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="UnitDetails">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Bedrooms" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Bathrooms" type="s:string" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="GrossSqFtCount" type="s:int" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RentSqFtCount" type="s:int" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FloorNumber" type="s:int" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Description" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="NoteDescription" type="s:string" />
+                    </s:sequence>
+                  </s:complexType>
+                </s:element>
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rentMatrix">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="row">
+                        <s:complexType>
+                          <s:sequence>
+                            <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="options">
+                              <s:complexType>
+                                <s:sequence>
+                                  <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="option">
+                                    <s:complexType>
+                                      <s:sequence>
+                                        <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Concessions">
+                                          <s:complexType>
+                                            <s:sequence>
+                                              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Total" type="s:string" />
+                                              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MonthlyFixed" type="s:string" />
+                                              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MonthlyPercent" type="s:string" />
+                                              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Months" type="s:string" />
+                                              <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="OneTimeFixed" type="s:string" />
+                                            </s:sequence>
+                                          </s:complexType>
+                                        </s:element>
+                                      </s:sequence>
+                                      <s:attribute name="Best" type="s:boolean" use="required" />
+                                      <s:attribute name="LeaseEndDate" type="s:string" />
+                                      <s:attribute name="LeaseTerm" type="s:string" />
+                                      <s:attribute name="Rent" type="s:string" />
+                                    </s:complexType>
+                                  </s:element>
+                                </s:sequence>
+                                <s:attribute name="LeaseStartDate" type="s:string" />
+                              </s:complexType>
+                            </s:element>
+                          </s:sequence>
+                          <s:attribute name="Building" type="s:string" />
+                          <s:attribute name="LeaseEndDate" type="s:string" />
+                          <s:attribute name="LeaseStartDate" type="s:string" />
+                          <s:attribute name="MakeReadyDate" type="s:string" />
+                          <s:attribute name="MaxRent" type="s:string" />
+                          <s:attribute name="MinRent" type="s:string" />
+                          <s:attribute name="Rent" type="s:string" />
+                          <s:attribute name="Unit" type="s:string" />
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute name="LeaseTerm" type="s:string" />
+                    <s:attribute name="LeaseTermMax" type="s:string" />
+                    <s:attribute name="LeaseTermMin" type="s:string" />
+                    <s:attribute name="NeededByDate" type="s:string" />
+                    <s:attribute name="PropertyID" type="s:string" />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserAuthInfo" type="tns:UserAuthInfo" />
+      <s:complexType name="UserAuthInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PmcID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InternalUser" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="CallBackAuthInfo" type="tns:CallBackAuthInfo" />
+      <s:complexType name="CallBackAuthInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="App" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PmcID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EncryptionKey" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetRentMatrix">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NeededByDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="LeaseTerm" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitIDs" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeAllLeaseTerms" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRentMatrixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRentMatrixResult" type="tns:ArrayOfRentMatrix" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRentMatrix">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RentMatrix" nillable="true">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="row">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="options">
+                        <s:complexType>
+                          <s:sequence>
+                            <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="option">
+                              <s:complexType>
+                                <s:sequence>
+                                  <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Concessions">
+                                    <s:complexType>
+                                      <s:sequence>
+                                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Total" type="s:string" />
+                                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MonthlyFixed" type="s:string" />
+                                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MonthlyPercent" type="s:string" />
+                                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Months" type="s:string" />
+                                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="OneTimeFixed" type="s:string" />
+                                      </s:sequence>
+                                    </s:complexType>
+                                  </s:element>
+                                </s:sequence>
+                                <s:attribute name="Best" type="s:boolean" use="required" />
+                                <s:attribute name="LeaseEndDate" type="s:string" />
+                                <s:attribute name="LeaseTerm" type="s:string" />
+                                <s:attribute name="Rent" type="s:string" />
+                              </s:complexType>
+                            </s:element>
+                          </s:sequence>
+                          <s:attribute name="LeaseStartDate" type="s:string" />
+                        </s:complexType>
+                      </s:element>
+                    </s:sequence>
+                    <s:attribute name="Building" type="s:string" />
+                    <s:attribute name="LeaseEndDate" type="s:string" />
+                    <s:attribute name="LeaseStartDate" type="s:string" />
+                    <s:attribute name="MakeReadyDate" type="s:string" />
+                    <s:attribute name="MaxRent" type="s:string" />
+                    <s:attribute name="MinRent" type="s:string" />
+                    <s:attribute name="Rent" type="s:string" />
+                    <s:attribute name="Unit" type="s:string" />
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute name="LeaseTerm" type="s:string" />
+              <s:attribute name="LeaseTermMax" type="s:string" />
+              <s:attribute name="LeaseTermMin" type="s:string" />
+              <s:attribute name="NeededByDate" type="s:string" />
+              <s:attribute name="PropertyID" type="s:string" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFloorPlanGroupsByProperty">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFloorPlanGroupsByPropertyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFloorPlanGroupsByPropertyResult" type="tns:PickListObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PickListObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ContentType" type="tns:ListType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contents" type="tns:ArrayOfPicklistItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ListType">
+        <s:restriction base="s:string">
+          <s:enumeration value="LIST_CONTACT" />
+          <s:enumeration value="LIST_FLOORPLANGROUP" />
+          <s:enumeration value="LIST_JOB" />
+          <s:enumeration value="LIST_LATEMETHOD" />
+          <s:enumeration value="LIST_LEADSOURCE" />
+          <s:enumeration value="LIST_LEASEREASON" />
+          <s:enumeration value="LIST_LEASETERM" />
+          <s:enumeration value="LIST_OPTIONS" />
+          <s:enumeration value="LIST_PET" />
+          <s:enumeration value="LIST_PETWEIGHT" />
+          <s:enumeration value="LIST_PRICERANGE" />
+          <s:enumeration value="LIST_RELATION" />
+          <s:enumeration value="LIST_VEHICLE" />
+          <s:enumeration value="LIST_BUILDING" />
+          <s:enumeration value="LIST_FLOORPLANCODEANDNAME" />
+          <s:enumeration value="LIST_FLOORPLANIDANDCODE" />
+          <s:enumeration value="LIST_FLOORPLANIDANDNAME" />
+          <s:enumeration value="LIST_PHONETYPE" />
+          <s:enumeration value="LIST_TRAFFICSOURCE" />
+          <s:enumeration value="LIST_UNIT" />
+          <s:enumeration value="LIST_LEASINGAGENT" />
+          <s:enumeration value="LIST_REASONMOVING" />
+          <s:enumeration value="LIST_ACTIVITYLOSSREASON" />
+          <s:enumeration value="LIST_ACTIVITYRESULTCODE" />
+          <s:enumeration value="LIST_ACTIVITYTYPE" />
+          <s:enumeration value="LIST_TASKPRIORITY" />
+          <s:enumeration value="LIST_TASKCATEGORY" />
+          <s:enumeration value="LIST_PROSPECTSTATUS" />
+          <s:enumeration value="LIST_ALLFLOORPLAN" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfPicklistItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PicklistItem" nillable="true" type="tns:PicklistItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PicklistItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WebServiceLogHeader" type="tns:WebServiceLogHeader" />
+      <s:complexType name="WebServiceLogHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WebServiceLogID" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetFloorPlanIDAndName">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFloorPlanIDAndNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFloorPlanIDAndNameResult" type="tns:PickListObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitsByProperty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listCriteria" type="tns:ArrayOfListCriterion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitsByPropertyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnitsByPropertyResult" type="tns:ArrayOfUnitObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListSoapIn">
+    <wsdl:part name="parameters" element="tns:List" />
+  </wsdl:message>
+  <wsdl:message name="ListSoapOut">
+    <wsdl:part name="parameters" element="tns:ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListUserAuthInfo">
+    <wsdl:part name="UserAuthInfo" element="tns:UserAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="ListCallBackAuthInfo">
+    <wsdl:part name="CallBackAuthInfo" element="tns:CallBackAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRentMatrixSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRentMatrix" />
+  </wsdl:message>
+  <wsdl:message name="GetRentMatrixSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRentMatrixResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRentMatrixUserAuthInfo">
+    <wsdl:part name="UserAuthInfo" element="tns:UserAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRentMatrixCallBackAuthInfo">
+    <wsdl:part name="CallBackAuthInfo" element="tns:CallBackAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanGroupsByPropertySoapIn">
+    <wsdl:part name="parameters" element="tns:GetFloorPlanGroupsByProperty" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanGroupsByPropertySoapOut">
+    <wsdl:part name="parameters" element="tns:GetFloorPlanGroupsByPropertyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanGroupsByPropertyUserAuthInfo">
+    <wsdl:part name="UserAuthInfo" element="tns:UserAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanGroupsByPropertyCallBackAuthInfo">
+    <wsdl:part name="CallBackAuthInfo" element="tns:CallBackAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanGroupsByPropertyWebServiceLogHeader">
+    <wsdl:part name="WebServiceLogHeader" element="tns:WebServiceLogHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanIDAndNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFloorPlanIDAndName" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanIDAndNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFloorPlanIDAndNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanIDAndNameUserAuthInfo">
+    <wsdl:part name="UserAuthInfo" element="tns:UserAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanIDAndNameCallBackAuthInfo">
+    <wsdl:part name="CallBackAuthInfo" element="tns:CallBackAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetFloorPlanIDAndNameWebServiceLogHeader">
+    <wsdl:part name="WebServiceLogHeader" element="tns:WebServiceLogHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByPropertySoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnitsByProperty" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByPropertySoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnitsByPropertyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByPropertyUserAuthInfo">
+    <wsdl:part name="UserAuthInfo" element="tns:UserAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByPropertyCallBackAuthInfo">
+    <wsdl:part name="CallBackAuthInfo" element="tns:CallBackAuthInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByPropertyWebServiceLogHeader">
+    <wsdl:part name="WebServiceLogHeader" element="tns:WebServiceLogHeader" />
+  </wsdl:message>
+  <wsdl:portType name="UnitSoap">
+    <wsdl:operation name="List">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">list unit information, including availability and pricing</wsdl:documentation>
+      <wsdl:input message="tns:ListSoapIn" />
+      <wsdl:output message="tns:ListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRentMatrix">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">obtain YSPO rent matrix data for any list of one or more apartments</wsdl:documentation>
+      <wsdl:input message="tns:GetRentMatrixSoapIn" />
+      <wsdl:output message="tns:GetRentMatrixSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFloorPlanGroupsByProperty">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get floor plan groups by property</wsdl:documentation>
+      <wsdl:input message="tns:GetFloorPlanGroupsByPropertySoapIn" />
+      <wsdl:output message="tns:GetFloorPlanGroupsByPropertySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFloorPlanIDAndName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get floor plan ID and name</wsdl:documentation>
+      <wsdl:input message="tns:GetFloorPlanIDAndNameSoapIn" />
+      <wsdl:output message="tns:GetFloorPlanIDAndNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByProperty">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get units by property.</wsdl:documentation>
+      <wsdl:input message="tns:GetUnitsByPropertySoapIn" />
+      <wsdl:output message="tns:GetUnitsByPropertySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UnitSoap" type="tns:UnitSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="List">
+      <soap:operation soapAction="http://realpage.com/webservices/List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ListUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap:header message="tns:ListCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentMatrix">
+      <soap:operation soapAction="http://realpage.com/webservices/GetRentMatrix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetRentMatrixUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap:header message="tns:GetRentMatrixCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFloorPlanGroupsByProperty">
+      <soap:operation soapAction="http://realpage.com/webservices/GetFloorPlanGroupsByProperty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetFloorPlanGroupsByPropertyUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap:header message="tns:GetFloorPlanGroupsByPropertyCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetFloorPlanGroupsByPropertyWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+        <soap:header message="tns:GetFloorPlanGroupsByPropertyWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFloorPlanIDAndName">
+      <soap:operation soapAction="http://realpage.com/webservices/GetFloorPlanIDAndName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetFloorPlanIDAndNameUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap:header message="tns:GetFloorPlanIDAndNameCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetFloorPlanIDAndNameWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+        <soap:header message="tns:GetFloorPlanIDAndNameWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByProperty">
+      <soap:operation soapAction="http://realpage.com/webservices/GetUnitsByProperty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUnitsByPropertyUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap:header message="tns:GetUnitsByPropertyCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUnitsByPropertyWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+        <soap:header message="tns:GetUnitsByPropertyWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UnitSoap12" type="tns:UnitSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="List">
+      <soap12:operation soapAction="http://realpage.com/webservices/List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ListUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap12:header message="tns:ListCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRentMatrix">
+      <soap12:operation soapAction="http://realpage.com/webservices/GetRentMatrix" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetRentMatrixUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap12:header message="tns:GetRentMatrixCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFloorPlanGroupsByProperty">
+      <soap12:operation soapAction="http://realpage.com/webservices/GetFloorPlanGroupsByProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetFloorPlanGroupsByPropertyUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap12:header message="tns:GetFloorPlanGroupsByPropertyCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetFloorPlanGroupsByPropertyWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+        <soap12:header message="tns:GetFloorPlanGroupsByPropertyWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFloorPlanIDAndName">
+      <soap12:operation soapAction="http://realpage.com/webservices/GetFloorPlanIDAndName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetFloorPlanIDAndNameUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap12:header message="tns:GetFloorPlanIDAndNameCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetFloorPlanIDAndNameWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+        <soap12:header message="tns:GetFloorPlanIDAndNameWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByProperty">
+      <soap12:operation soapAction="http://realpage.com/webservices/GetUnitsByProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUnitsByPropertyUserAuthInfo" part="UserAuthInfo" use="literal" />
+        <soap12:header message="tns:GetUnitsByPropertyCallBackAuthInfo" part="CallBackAuthInfo" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUnitsByPropertyWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+        <soap12:header message="tns:GetUnitsByPropertyWebServiceLogHeader" part="WebServiceLogHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Unit">
+    <wsdl:port name="UnitSoap" binding="tns:UnitSoap">
+      <soap:address location="http://villagegreencompanies.onesite.realpage.com/WebServices/CrossFire/AvailabilityAndPricing/Unit.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UnitSoap12" binding="tns:UnitSoap12">
+      <soap12:address location="http://villagegreencompanies.onesite.realpage.com/WebServices/CrossFire/AvailabilityAndPricing/Unit.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
