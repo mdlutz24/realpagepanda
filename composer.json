@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "mdlutz24\\realpagepanda\\FloorPlan\\": "./src/FloorPlan/"
+            "mdlutz24\\realpagepanda\\": "./src/"
         }
     }
 }
